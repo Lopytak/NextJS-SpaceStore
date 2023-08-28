@@ -1,0 +1,10 @@
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.earthPosition {
+    position: sticky;
+    width: 30vw;
+    height: auto;
+}
