@@ -1,7 +1,7 @@
-import styles from '../styles/Header.module.css'
-import { passionOne } from "../fonts/fonts";
+import styles from '../../styles/Header.module.css'
+import { passionOne } from "../../public/fonts/fonts";
 
-const Body = () => {
+const Header = () => {
     return (
         <div className={ [styles.header, styles.flexColumn].join(' ')}>
             <div className={ [styles.headerName, passionOne.className].join(' ') }>ARMAGEDDON 2023</div>
@@ -13,4 +13,4 @@ const Body = () => {
     );
 };
 
-export default Body;
+export default Header;

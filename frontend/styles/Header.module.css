@@ -20,3 +20,24 @@
     display: flex;
     flex-direction: column;
 }
+
+@media (max-width: 768px) {
+    .header {
+        padding: 4.5vw;
+        margin-bottom: 3vw;
+    }
+
+    .headerName {
+        font-size: 9vw;
+        color: #F86600;
+        padding-bottom: 3vw;
+    }
+
+    .headerDescription {
+        font-size: 4.5vw;
+    }
+
+    .headerDescriptionElementMarginBottom {
+        margin-bottom: 1.5vw;
+    }
+}
