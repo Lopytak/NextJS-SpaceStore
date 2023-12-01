@@ -1,0 +1,162 @@
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.asteroidListElement {
+    margin-top: 2.5vw;
+}
+
+.asteroidDate {
+    font-size: 2vw;
+    margin-bottom: 1vw;
+}
+
+.asteroidListElementDistance {
+    font-size: 1.4vw;
+    margin-top: 0.5vw;
+}
+
+.asteroidListElementName {
+    font-size: 1.4vw;
+    margin-top: 0.5vw;
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+
+.asteroidListElementName:hover {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.arrowLeftRight {
+    margin-top: 0.5vw;
+    width: auto;
+    height: auto;
+}
+
+.asteroidSmallImage {
+    margin: 1vw 1vw;
+    width: 2vw;
+    height: auto;
+}
+
+.asteroidBigImage {
+    margin: 0.5vw;
+    width: 3vw;
+    height: auto;
+}
+
+.asteroidListElementDiameter {
+    font-size: 1vw;
+    margin-top: 0.5vw;
+}
+
+.orderButton {
+    background-color: #250f00;
+    padding: 0.5vw 1vw;
+    border-radius: 5vw;
+    font-weight: 700;
+    font-size: 0.9vw;
+    letter-spacing: 0.1vw;
+    text-decoration: none;
+    margin-right: 0.8vw;
+}
+
+.orderButton:hover {
+    background-color: #F86600;
+    color: #FFFFFF;
+}
+
+.orderButtonUndo {
+    color: #F86600;
+}
+
+.orderButtonDo {
+    color: #F5DED9;
+}
+
+.warningMessage {
+    display: flex;
+    font-size: 1.2vw;
+    color: #E3E5E5;
+    align-items: center;
+}
+
+.warningSign {
+    width: 1.3vw;
+    height: auto;
+    margin-right: 0.35vw;
+}
+
+@media (max-width: 768px) {
+    .asteroidListElement {
+        margin-top: 5.5vw;
+    }
+
+    .asteroidDate {
+        font-size: 5.5vw;
+        margin-bottom: 2vw;
+    }
+
+    .asteroidListElementDistance {
+        font-size: 4vw;
+        margin-top: 0.5vw;
+    }
+
+    .asteroidListElementName {
+        font-size: 4vw;
+    }
+
+    .arrowLeftRight {
+        margin-top: 1.5vw;
+        width: auto;
+        height: auto;
+    }
+
+    .asteroidSmallImage {
+        margin: 2vw 2vw;
+        width: 4.5vw;
+        height: auto;
+    }
+
+    .asteroidBigImage {
+        margin: 1.5vw;
+        width: 6.5vw;
+        height: auto;
+    }
+
+    .asteroidListElementDiameter {
+        font-size: 3vw;
+        margin-top: 0.5vw;
+    }
+
+    .orderButton {
+        background-color: #250f00;
+        padding: 1vw 2vw;
+        border-radius: 5vw;
+        font-weight: 700;
+        font-size: 2.5vw;
+        letter-spacing: 0.5vw;
+        text-decoration: none;
+        margin-right: 2vw;
+    }
+
+    .warningMessage {
+        display: flex;
+        font-size: 3vw;
+        color: #E3E5E5;
+        align-items: center;
+    }
+
+    .warningSign {
+        width: 3vw;
+        height: auto;
+        margin-right: 0.5vw;
+    }
+}
