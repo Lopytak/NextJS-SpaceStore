@@ -1,0 +1,87 @@
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.asteroidListWrapper {
+    display: block;
+    margin: 0 5vw;
+    max-width: 40vw;
+    width: auto;
+    height: auto;
+}
+
+.asteroidListHeaderName {
+    font-size: 2.5vw;
+    font-weight: 700;
+}
+
+.asteroidListHeaderDescription {
+    font-size: 1.4vw;
+    margin-top: 1vw;
+}
+
+.measureSelected {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.measureUnSelected {
+    cursor: pointer;
+}
+
+.measureUnSelected:hover {
+    text-decoration: underline;
+}
+
+.asteroidList {
+    margin-bottom: 10vh;
+}
+
+.loadingData {
+    font-size: 4vw;
+    color: #FFFFFF;
+    margin-top: 20vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media (max-width: 768px) {
+    .asteroidListWrapper {
+        display: block;
+        margin: 0 0 0 5vw;
+        max-width: 70vw;
+        width: 100vw;
+        height: auto;
+    }
+
+    .asteroidListHeaderName {
+        font-size: 7.5vw;
+        font-weight: 700;
+    }
+
+    .asteroidListHeaderDescription {
+        font-size: 4vw;
+        margin-top: 3vw;
+        max-width: 100%;
+    }
+
+    .asteroidList {
+        margin-bottom: 10vh;
+    }
+
+    .loadingData {
+        font-size: 12vw;
+        color: #FFFFFF;
+        margin-top: 20vh;
+        justify-content: center;
+        align-items: center;
+    }
+}
