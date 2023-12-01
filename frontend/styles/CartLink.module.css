@@ -1,0 +1,80 @@
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.basketLinkWrapper {
+    position: fixed;
+    top: 12vw;
+    right: 10vw;
+    background-color: #232526;
+    font-size: 1.5vw;
+    padding: 2vw 2vw 3vw 2vw;
+    border-radius: 2vw;
+    height: auto;
+}
+
+.basketLinkTextWrapper {
+    margin-bottom: 4vw;
+}
+
+.basketLinkName {
+    font-weight: 700;
+    padding-bottom: 0.5vw;
+}
+
+.basketLinkButton {
+    color: #FFFFFF;
+    background-color: #F86600;
+    padding: 1.2vw 1.5vw;
+    border-radius: 5vw;
+    font-weight: 700;
+    font-size: 1.5vw;
+    text-decoration: none;
+}
+
+.basketLinkButton:hover {
+    background-color: #fC9403;
+}
+
+
+
+@media (max-width: 768px) {
+    .basketLinkWrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        right: auto;
+        width: 92vw;
+        background-color: #232526;
+        font-size: 4vw;
+        padding: 4vw;
+        border-radius: 0;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .basketLinkName {
+        font-weight: 700;
+        padding-bottom: 1vw;
+    }
+
+    .basketLinkTextWrapper {
+        margin-bottom: 0;
+        display: inline-flex;
+        width: auto;
+    }
+
+    .basketLinkButton {
+        background-color: #F86600;
+        padding: 3vw 3vw;
+        border-radius: 8vw;
+        font-weight: 700;
+        font-size: 3.5vw;
+        text-decoration: none;
+        margin-left: auto;
+    }
+}
