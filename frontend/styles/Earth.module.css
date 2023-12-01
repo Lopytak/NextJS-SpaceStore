@@ -1,0 +1,27 @@
+.earthPosition {
+    width: 30vw;
+    height: 100%;
+}
+
+.earthImageWrapper {
+    align-self: flex-start;
+    position: sticky;
+    top: 5vh;
+    width: 30vw;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .earthImageWrapper {
+        align-self: flex-start;
+        position: sticky;
+        top: 5vh;
+        width: 20vw;
+        height: 90vh;
+        overflow: hidden;
+    }
+    .earthPosition {
+        width: 100vw;
+        transform: translate(-80%, 0%);
+    }
+}
