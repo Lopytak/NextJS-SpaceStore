@@ -1,12 +1,9 @@
-import Header from "../components/Header";
-import Body from "../components/Body";
+import MainPageBody from "../components/MainPageBody";
+import Layout from "../components/layout/Layout";
 
 const Index = () => {
     return (
-        <>
-            <Header/>
-            <Body/>
-        </>
+        <Layout Body={ <MainPageBody/> }/>
     );
 };
 
