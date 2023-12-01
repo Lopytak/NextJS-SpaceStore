@@ -1,0 +1,119 @@
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.measureSelected {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.measureUnSelected {
+    cursor: pointer;
+}
+
+.measureUnSelected:hover {
+    text-decoration: underline;
+}
+
+.descriptionName {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2vw;
+    margin-bottom: 3vh;
+    color: #F86600;
+}
+
+.sectionButtonsWrapper {
+    font-size: 1.5vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 5vw;
+    margin-bottom: 3vh;
+}
+
+.featureWrapper {
+    font-size: 1.3vw;
+    display: grid;
+    grid-template-columns: 40vw 10vw;
+    justify-content: center;
+    margin: 1vh 20vw 1vh 25vw;
+}
+
+.underLine {
+    width: auto;
+    border: 0.1vh solid #808080;
+    opacity: 0.7;
+}
+
+.featureValue {
+    margin-left: 1vw;
+}
+
+.closeApproachWrapper {
+    font-size: 1.3vw;
+    display: grid;
+    grid-template-columns: 50vw 20vw;
+    justify-content: center;
+    /*gap: 20vw;*/
+    margin: 1vh 20vw 1vh 25vw;
+}
+
+.closeApproachValue {
+    margin-left: 1vw;
+}
+
+.separateLine {
+    width: auto;
+    border: 1vh solid #F86600;
+    margin: 4vh 0;
+}
+
+@media (max-width: 768px) {
+    .descriptionName {
+        font-size: 6vw;
+    }
+
+    .sectionButtonsWrapper {
+        font-size: 3.5vw;
+    }
+
+    .featureWrapper {
+        font-size: 3.5vw;
+        grid-template-columns: 60vw 20vw;
+        margin: 1.5vh 0 1.5vh 0;
+    }
+
+    .underLine {
+        width: auto;
+        border: 0.2vh solid #808080;
+    }
+
+    .featureValue {
+        display: grid;
+        align-items: end;
+    }
+
+    .closeApproachWrapper {
+        font-size: 3.5vw;
+        grid-template-columns: 60vw 20vw;
+        margin: 1vh 0 1vh 0;
+    }
+
+    .closeApproachValue {
+        display: grid;
+        align-items: end;
+    }
+
+    .separateLine {
+        border: 1vh solid #F86600;
+        margin: 3vh 0;
+    }
+}
