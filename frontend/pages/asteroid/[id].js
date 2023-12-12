@@ -14,7 +14,6 @@ const AsteroidPage = () => {
     const { isPending, error, data } = useQuery({
         queryKey: ['asteroidData', query.id],
         queryFn: () => DataService.getAsteroidById(query.id),
-        // initialData: { data: {} },
         enabled: !!query.id,
         select: ({data}) => transformAsteroidDescriptionData(data)
     });
@@ -23,6 +22,7 @@ const AsteroidPage = () => {
         if (!!data) {
             setParsedAsteroidData(data)
         }
+
     }, [data])
 
     return (
@@ -36,7 +36,6 @@ const AsteroidPage = () => {
                             <p className={ [styles.flexRow, styles.loadingData].join(' ') }>Загрузка...</p>
                             :
                             <div>
-                                <button onClick={() => console.log('fgdfdfg')}></button>
                                 <AsteroidDescription descriptionData={ parsedAsteroidData }/>
                             </div>
                     }

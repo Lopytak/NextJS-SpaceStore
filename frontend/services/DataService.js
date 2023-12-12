@@ -17,16 +17,6 @@ export const DataService = {
         );
     },
 
-    // async getTemp(asteroidID) {
-    //     const response = await axios.get(
-    //         `https://dummyjson.com/products/${asteroidID}`
-    //     )
-    //     console.log(asteroidID)
-    //     console.log(response.data)
-    //
-    //     return response.data;
-    // },
-
     async getAsteroidsById(asteroidIDs) {
         const responseArray = []
 

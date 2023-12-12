@@ -59,13 +59,7 @@ const CartBody = () => {
                             {
                                 isPending ? <p className={ [styles.flexRow, styles.loadingData].join(' ') }>Загрузка... </p> : cartList.map(asteroid => <AsteroidItem
                                         key={ asteroid.id }
-                                        id={ asteroid.id }
-                                        date={ asteroid.date }
-                                        distanceKM={ asteroid.distanceKilometers }
-                                        distanceLunar={ asteroid.distanceLunar }
-                                        name={ asteroid.name }
-                                        diameter={ asteroid.diameter }
-                                        isHazardous={ asteroid.isHazardous }
+                                        asteroidData={ asteroid }
                                         distanceMeasure={ distanceMeasure }
                                         isBuyable={ false }
                                     />

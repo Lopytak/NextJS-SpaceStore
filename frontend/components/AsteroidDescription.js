@@ -6,6 +6,8 @@ const AsteroidDescription = ({descriptionData}) => {
     const [mainFeaturesArray, setMainFeaturesArray] = useState([]);
     const [currentFeatures, setCurrentFeatures] = useState('mainFeatures');
     const [closeApproachesArray, setCloseApproachesArray] = useState([])
+    const [currentElementCount, setCurrentElementCount] = useState(10)
+    const [addingAsteroids, setAddingAsteroids] = useState(false);
 
     useEffect(() => {
         if (!!Object.keys(descriptionData).length) {
@@ -13,12 +15,36 @@ const AsteroidDescription = ({descriptionData}) => {
             for (const mainFeature in descriptionData.mainFeatures) {
                 setMainFeaturesArray(arr => [...arr, descriptionData.mainFeatures[mainFeature]])
             }
-
-            descriptionData.closeApproaches.forEach(item => {
-                setCloseApproachesArray(arr => [...arr, item])
-            })
+            setAddingAsteroids(true)
         }
     }, [descriptionData])
+
+    useEffect(() => {
+        document.addEventListener('scroll', scrollHandler)
+        return () => document.removeEventListener('scroll', scrollHandler)
+    }, []);
+
+    const scrollHandler = (e) => {
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setAddingAsteroids(true);
+        }
+    }
+
+    useEffect(() => {
+        if (
+            !!Object.keys(descriptionData).length &&
+            addingAsteroids &&
+            (descriptionData.closeApproaches.length + 10 > currentElementCount) &&
+            (currentFeatures === 'closeApproaches' || currentElementCount === 10)
+        ) {
+            for (let i = currentElementCount - 10; i < currentElementCount; i++) {
+                if (!!descriptionData.closeApproaches[i]) setCloseApproachesArray(arr => [...arr, descriptionData.closeApproaches[i]])
+            }
+            setCurrentElementCount(prev => prev + 10)
+        }
+        setAddingAsteroids(false);
+
+    }, [addingAsteroids])
 
     return (
         <div className={ styles.flexColumn }>
@@ -49,7 +75,7 @@ const AsteroidDescription = ({descriptionData}) => {
                         <div>
                             {
                                 closeApproachesArray.map((closeApproach, key) =>
-                                    <div onClick={() => console.log(closeApproach.orbitingBody)} key={key}>
+                                    <div key={key}>
                                         <hr className={ styles.separateLine }/>
                                         <div className={ styles.closeApproachWrapper }>
                                             <div>

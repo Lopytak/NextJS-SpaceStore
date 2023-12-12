@@ -7,24 +7,18 @@ import cursorPointer from "../public/images/cursorPointer.png";
 import Link from "next/link";
 
 const AsteroidItem = ({
-    id,
-    date,
-    distanceKM,
-    distanceLunar,
-    name,
-    diameter,
-    isHazardous,
+    asteroidData,
     distanceMeasure = 'kilometers',
     addAsteroidToCart = undefined,
     cart = undefined,
     isBuyable
 }) => {
     return (
-        <div className={ styles.asteroidListElement } key={ id }>
-            <p className={ styles.asteroidDate }>{ date }</p>
+        <div className={ styles.asteroidListElement }>
+            <p className={ styles.asteroidDate }>{ asteroidData.date }</p>
             <div className={ styles.flexRow }>
                 <div className={ styles.flexColumn }>
-                    <p className={ styles.asteroidListElementDistance }>{ distanceMeasure === 'kilometers' ? distanceKM + ' км' : distanceLunar + ' лун орб'}</p>
+                    <p className={ styles.asteroidListElementDistance }>{ distanceMeasure === 'kilometers' ? asteroidData.distanceKilometers + ' км' : asteroidData.distanceLunar + ' лун орб'}</p>
                     <Image
                         src={ arrowLeftRight }
                         alt='Стрелка влево-вправо'
@@ -35,33 +29,33 @@ const AsteroidItem = ({
                     src={ asteroidImage }
                     alt='Астероид'
                     className={
-                        diameter < 100 ? styles.asteroidSmallImage : styles.asteroidBigImage
+                        asteroidData.diameter < 100 ? styles.asteroidSmallImage : styles.asteroidBigImage
                     }
                 />
                 <div className={ styles.flexColumn }>
                     <Link
                         className={ styles.asteroidListElementName }
                         style={{ cursor: `url(${cursorPointer.src}), auto` }}
-                        href={ `/asteroid/${id}` }
+                        href={ `/asteroid/${asteroidData.id}` }
                     >
-                        { name }
+                        { asteroidData.name }
                     </Link>
-                    <p className={ styles.asteroidListElementDiameter }>Ø { diameter } м</p>
+                    <p className={ styles.asteroidListElementDiameter }>Ø { asteroidData.diameter } м</p>
                 </div>
             </div>
             <div className={ styles.flexRow }>
                 {
                     isBuyable ?
                         <a
-                            onClick={ () => addAsteroidToCart(id) }
-                            className={ [styles.orderButton, cart.includes(id) ? styles.orderButtonUndo : styles.orderButtonDo].join(' ') }
+                            onClick={ () => addAsteroidToCart(asteroidData.id) }
+                            className={ [styles.orderButton, cart.includes(asteroidData.id) ? styles.orderButtonUndo : styles.orderButtonDo].join(' ') }
                             style={{ cursor: `url(${cursorPointer.src}), auto` }}>
-                            { cart.includes(id) ? <>В КОРЗИНЕ</> : <>ЗАКАЗАТЬ</> }
+                            { cart.includes(asteroidData.id) ? <>В КОРЗИНЕ</> : <>ЗАКАЗАТЬ</> }
                         </a> : false
                 }
                 <div className={ styles.flexRow }>
                     {
-                        isHazardous ?
+                        asteroidData.isHazardous ?
                             (<p className={styles.warningMessage}>
 
                                 <Image

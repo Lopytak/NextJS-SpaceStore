@@ -1,53 +1,43 @@
 import styles from '../styles/AsteroidList.module.css';
 import {useContext, useEffect, useState} from "react";
-import {DataService} from "../services/DataService";
-import {useQuery} from "@tanstack/react-query";
 import {formatAsteroidObject, sortDatesArray} from "../utils/Utils";
 import {CartContext} from "../providers/CartProvider";
 import AsteroidItem from "./AsteroidItem";
 
-const AsteroidList = () => {
+const AsteroidList = ({data, error, isPending}) => {
 
     const { cart, setCart, distanceMeasure, setDistanceMeasure } = useContext(CartContext);
-    const [addingAsteroids, setAddingAsteroids] = useState(false);
-
-    const { isPending, error, data } = useQuery({
-        queryKey: ['asteroidList'],
-        queryFn: () => DataService.getData(),
-        select: ({data}) => data
-    });
 
     const [asteroidsArray, setAsteroidsArray] = useState([]);
     const [currentPageCount, setCurrentPageCount] = useState(0);
     const [datesArray, setDatesArray] = useState([]);
+    const [addingAsteroids, setAddingAsteroids] = useState(false);
 
     useEffect(() => {
-        setAddingAsteroids(true);
+        if (!!Object.keys(data).length) {
+            setDatesArray(Object.keys(data.near_earth_objects).sort(sortDatesArray));
+            setAddingAsteroids(true);
+        }
     }, [data])
 
     useEffect(() => {
-        if (!!data) {
-            if (!!datesArray.length && datesArray.length > currentPageCount) {
-                data.near_earth_objects[datesArray[currentPageCount]].forEach(item => {
-                    setAsteroidsArray(arr => arr = arr.concat(
-                        [
-                            formatAsteroidObject({
-                                id: item.neo_reference_id,
-                                date: item.close_approach_data[0].close_approach_date,
-                                distanceKilometers: item.close_approach_data[0].miss_distance.kilometers,
-                                distanceLunar: item.close_approach_data[0].miss_distance.lunar,
-                                name: item.name,
-                                diameter: item.estimated_diameter.meters.estimated_diameter_min,
-                                isHazardous: item.is_potentially_hazardous_asteroid
-                            })
-                        ]
-                    ));
-                });
-                setCurrentPageCount(prev => prev = prev + 1);
-            }
-            else {
-                setDatesArray(Object.keys(data.near_earth_objects).sort(sortDatesArray));
-            }
+        if (!!data && addingAsteroids && (datesArray.length > currentPageCount)) {
+            data.near_earth_objects[datesArray[currentPageCount]].forEach(item => {
+                setAsteroidsArray(arr => arr = arr.concat(
+                    [
+                        formatAsteroidObject({
+                            id: item.neo_reference_id,
+                            date: item.close_approach_data[0].close_approach_date,
+                            distanceKilometers: item.close_approach_data[0].miss_distance.kilometers,
+                            distanceLunar: item.close_approach_data[0].miss_distance.lunar,
+                            name: item.name,
+                            diameter: item.estimated_diameter.meters.estimated_diameter_min,
+                            isHazardous: item.is_potentially_hazardous_asteroid
+                        })
+                    ]
+                ));
+            });
+            setCurrentPageCount(prev => prev = prev + 1);
         }
         setAddingAsteroids(false);
 
@@ -90,20 +80,14 @@ const AsteroidList = () => {
             </div>
             {
                 error ?
-                    <div onClick={ () => console.log(error)} className={ [styles.flexRow, styles.loadingData].join(' ') }>Ошибка</div>
+                    <div className={ [styles.flexRow, styles.loadingData].join(' ') }>Ошибка</div>
                     :
                     <div className={ styles.asteroidList }>
                         {
                             isPending ? <p className={ [styles.flexRow, styles.loadingData].join(' ') }>Загрузка... </p> : asteroidsArray.map(asteroid =>
                                 <AsteroidItem
                                     key={ asteroid.id }
-                                    id={ asteroid.id }
-                                    date={ asteroid.date }
-                                    distanceKM={ asteroid.distanceKilometers }
-                                    distanceLunar={ asteroid.distanceLunar }
-                                    name={ asteroid.name }
-                                    diameter={ asteroid.diameter }
-                                    isHazardous={ asteroid.isHazardous }
+                                    asteroidData={ asteroid }
                                     distanceMeasure={ distanceMeasure }
                                     addAsteroidToCart={ addAsteroidToCart }
                                     cart={ cart }
